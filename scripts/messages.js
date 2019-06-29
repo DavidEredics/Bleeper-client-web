@@ -38,10 +38,48 @@ function readMessages() {
   });
 }
 
+function sendMessage() {
+  const inputs = document.getElementById('sendMessage').getElementsByTagName('input');
+  const to = inputs.to.value;
+  const text = inputs.text.value;
+  const messageData = { to, text };
+
+  fetch(`${sessionStorage.serverUrl}/message/send`, {
+    method: 'POST',
+    body: JSON.stringify(messageData),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${sessionStorage.token}`,
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    showError(`status: ${response.status}\nstatusText: ${response.statusText}`);
+    return null;
+  }).then((responseData) => {
+    if (responseData !== null && responseData !== undefined) {
+      if (Object.prototype.hasOwnProperty.call(responseData, 'Success')) {
+        showError(responseData.Success);
+      } else if (Object.prototype.hasOwnProperty.call(responseData, 'Error')) {
+        showError(responseData.Error);
+      }
+    } else {
+      showError('Can not connect to server');
+    }
+  }).catch((error) => {
+    showError(`Can not connect to server <br> ${error}`);
+  });
+}
+
 if (sessionStorage.token
   && sessionStorage.token_exp * 1000 >= Date.now()
   && sessionStorage.token_iat * 1000 <= Date.now() && sessionStorage.serverUrl) {
   readMessages();
+
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    sendMessage();
+  });
 } else {
   window.location.replace('login.html');
 }
