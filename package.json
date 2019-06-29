@@ -4,7 +4,8 @@
   "description": "A web client implementation for Bleeper",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint \"./**/*.js\"",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/DavidEredics/Bleeper-client-web/issues"
   },
-  "homepage": "https://github.com/DavidEredics/Bleeper-client-web#readme"
+  "homepage": "https://github.com/DavidEredics/Bleeper-client-web#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.18.0"
+  }
 }
