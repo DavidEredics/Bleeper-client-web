@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "lint": "eslint \"./**/*.js\"",
-    "test": "npm run lint"
+    "htmlvalidate": "html-validate *.html",
+    "test": "npm run lint && npm run htmlvalidate"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.18.0"
+    "eslint-plugin-import": "^2.18.0",
+    "html-validate": "^1.2.0"
   }
 }
