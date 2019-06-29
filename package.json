@@ -1,0 +1,27 @@
+{
+  "name": "bleeper-client-web",
+  "version": "1.0.0",
+  "description": "A web client implementation for Bleeper",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidEredics/Bleeper-client-web.git"
+  },
+  "keywords": [
+    "communication",
+    "message",
+    "chat",
+    "rest",
+    "api",
+    "client"
+  ],
+  "author": "Dávid Eredics",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/DavidEredics/Bleeper-client-web/issues"
+  },
+  "homepage": "https://github.com/DavidEredics/Bleeper-client-web#readme"
+}
