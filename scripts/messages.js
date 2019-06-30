@@ -74,7 +74,7 @@ function sendMessage() {
 
 if (sessionStorage.token
   && sessionStorage.token_exp * 1000 >= Date.now()
-  && sessionStorage.token_iat * 1000 <= Date.now() && sessionStorage.serverUrl) {
+  && sessionStorage.serverUrl) {
   readMessages();
 
   document.getElementById('sendBtn').addEventListener('click', () => {
