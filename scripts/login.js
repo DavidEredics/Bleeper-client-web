@@ -1,8 +1,11 @@
 /* global showError */
 
 window.onload = document.getElementById('loginBtn').addEventListener('click', () => {
-  const serverUrl = document.getElementById('serverUrl').value;
+  let serverUrl = document.getElementById('serverUrl').value;
   if (serverUrl !== undefined && serverUrl !== '') {
+    if (!serverUrl.startsWith('https://')) {
+      serverUrl = `https://${serverUrl}`;
+    }
     const inputs = document.getElementById('login').getElementsByTagName('input');
     const name = inputs.name.value;
     const password = inputs.password.value;
