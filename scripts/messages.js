@@ -1,5 +1,7 @@
 /* global showError */
 
+const { serverUrl } = localStorage;
+
 function showMessage(messages) {
   if (messages.length >= 0) {
     let messagesTable = '<table id="table-messages" border="1">';
@@ -18,9 +20,7 @@ function showMessage(messages) {
 }
 
 function readMessages() {
-  const serverUrl = `${sessionStorage.serverUrl}/message/read`;
-
-  fetch(serverUrl, {
+  fetch(`${serverUrl}/message/read`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function sendMessage() {
   const text = inputs.text.value;
   const messageData = { to, text };
 
-  fetch(`${sessionStorage.serverUrl}/message/send`, {
+  fetch(`${serverUrl}/message/send`, {
     method: 'POST',
     body: JSON.stringify(messageData),
     headers: {
@@ -74,7 +74,7 @@ function sendMessage() {
 
 if (sessionStorage.token
   && sessionStorage.token_exp * 1000 >= Date.now()
-  && sessionStorage.serverUrl) {
+  && localStorage.serverUrl) {
   readMessages();
 
   document.getElementById('sendBtn').addEventListener('click', () => {

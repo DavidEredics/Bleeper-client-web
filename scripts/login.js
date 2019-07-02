@@ -1,6 +1,10 @@
 /* global showError */
 
-window.onload = document.getElementById('loginBtn').addEventListener('click', () => {
+if (localStorage.serverUrl) {
+  document.getElementById('serverUrl').value = localStorage.serverUrl;
+}
+
+document.getElementById('loginBtn').addEventListener('click', () => {
   let serverUrl = document.getElementById('serverUrl').value;
   if (serverUrl !== undefined && serverUrl !== '') {
     if (!serverUrl.startsWith('https://')) {
@@ -26,7 +30,7 @@ window.onload = document.getElementById('loginBtn').addEventListener('click', ()
     }).then((responseData) => {
       if (responseData !== null && responseData !== undefined) {
         if (Object.prototype.hasOwnProperty.call(responseData, 'authToken')) {
-          sessionStorage.setItem('serverUrl', serverUrl);
+          localStorage.setItem('serverUrl', serverUrl);
           sessionStorage.setItem('token', responseData.authToken.token);
           sessionStorage.setItem('token_iat', responseData.authToken.iat);
           sessionStorage.setItem('token_exp', responseData.authToken.exp);
