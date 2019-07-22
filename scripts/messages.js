@@ -3,7 +3,7 @@
 const { serverUrl } = localStorage;
 
 function showMessage(messages) {
-  if (messages.length >= 0) {
+  if (messages !== null && messages.length >= 0) {
     let messagesTable = '<table id="table-messages" border="1">';
     messagesTable += '<tr><td>Date</td><td>From</td><td>Text</td></tr>';
     messagesTable += '</table>';
@@ -29,6 +29,10 @@ function readMessages() {
   }).then((response) => {
     if (!response.ok) {
       showError(`status: ${response.status}\nstatusText: ${response.statusText}`);
+    }
+    if (response.status === 204) {
+      showError('No messages');
+      return null;
     }
     return response.json();
   }).then((responseData) => {
