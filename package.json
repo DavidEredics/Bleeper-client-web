@@ -27,9 +27,9 @@
   },
   "homepage": "https://github.com/DavidEredics/Bleeper-client-web#readme",
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "html-validate": "^1.5.1"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "html-validate": "^2.21.0"
   }
 }
